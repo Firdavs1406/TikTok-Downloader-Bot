@@ -33,10 +33,7 @@ app = Client("JayBee", bot_token=bot_token, api_id=api, api_hash=hash, workers=w
 def start(client, message):
     kb = [[InlineKeyboardButton('Channel 🛡', url=chnnl),InlineKeyboardButton('Repo 🔰', url="https://github.com/TerminalWarlord/TikTok-Downloader-Bot/")]]
     reply_markup = InlineKeyboardMarkup(kb)
-    app.send_message(chat_id=message.from_user.id, text=f"Hello there, I am **TikTok Downloader Bot**.\nI can download TikTok video without Watermark.\n\n"
-                          "__**Developer :**__ __@JayBeeDev__\n"
-                          "__**Language :**__ __Python__\n"
-                          "__**Framework :**__ __🔥 Pyrogram__",
+    app.send_message(chat_id=message.from_user.id, text=f"Ассаляму Алейкум Ва Рахматуллахи Барракатух!.\nЯ те видос с тиктока скачаю уцы\n",
                      parse_mode='md',
                      reply_markup=reply_markup)
 
@@ -47,8 +44,8 @@ def start(client, message):
 def help(client, message):
     kb = [[InlineKeyboardButton('Channel 🛡', url=chnnl),InlineKeyboardButton('Repo 🔰', url="https://github.com/TerminalWarlord/TikTok-Downloader-Bot/")]]
     reply_markup = InlineKeyboardMarkup(kb)
-    app.send_message(chat_id=message.from_user.id, text=f"Hello there, I am **TikTok Downloader Bot**.\nI can download any TikTok video from a given link.\n\n"
-                                            "__Send me a TikTok video link__",
+    app.send_message(chat_id=message.from_user.id, text=f"Ассаляму Алейкум Ва Рахматуллахи Барракатух!.\nЯ те видос с тиктока скачаю уцы\n\n"
+                                            "__Ссылку отправь да по-братски__",
                      parse_mode='md',
                      reply_markup=reply_markup)
 
@@ -56,7 +53,7 @@ def help(client, message):
 @app.on_message((filters.regex("http://")|filters.regex("https://")) & (filters.regex('tiktok')|filters.regex('douyin')))
 def tiktok_dl(client, message):
     a = app.send_message(chat_id=message.chat.id,
-                         text='__Downloading File to the Server__',
+                         text='__Скачивю на сервер вац__',
                          parse_mode='md')
     link = re.findall(r'\bhttps?://.*[(tiktok|douyin)]\S+', message.text)[0]
     link = link.split("?")[0]
@@ -72,8 +69,6 @@ def tiktok_dl(client, message):
       'x-rapidapi-key': "f9d65af755msh3c8cac23b52a5eep108a33jsnbf7de971bb72"
     }
     
-    ### Get your Free TikTok API from https://rapidapi.com/TerminalWarlord/api/tiktok-info/
-    #Using the default one can stop working any moment 
     
     api = f"https://tiktok-info.p.rapidapi.com/dl/"
     r = requests.get(api, params=params, headers=headers).json()['videoLinks']['download']
@@ -108,8 +103,8 @@ def tiktok_dl(client, message):
                     if percent == 100:
                         show = 0
 
-        a.edit(f'__Downloaded to the server!\n'
-               f'Uploading to Telegram Now ⏳__')
+        a.edit(f'__На сервер скачал жи ес!\n'
+               f'Ща отправляю вац ⏳__')
         start = time.time()
         title = filename
         app.send_document(chat_id=message.chat.id,
